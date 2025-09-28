@@ -1,0 +1,6 @@
+| Feature                       | GCP (Workload Identity)    | Azure (GitHub OIDC)           |
+| ----------------------------- | -------------------------- | ----------------------------- |
+| Long-lived key required?      | No                         | No                            |
+| Token source                  | GitHub OIDC token          | GitHub OIDC token             |
+| Cloud service validates claim | IAM Workload Identity Pool | Azure AD Federated Credential |
+| Lifetime of token             | Minutes                    | Minutes                       |
