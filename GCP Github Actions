@@ -33,3 +33,13 @@ jobs:
       - name: Deploy manifests
         run: |
           kubectl apply -f k8s/
+
+
+| Secret                | Example                                                                                           |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| `GCP_WIF_PROVIDER`    | projects/123456789/locations/global/workloadIdentityPools/github-pool/providers/github-provider   |
+| `GCP_SERVICE_ACCOUNT` | [deploy-sa@myproject.iam.gserviceaccount.com](mailto:deploy-sa@myproject.iam.gserviceaccount.com) |
+| `GKE_CLUSTER_NAME`    | my-gke-cluster                                                                                    |
+| `GKE_REGION`          | us-central1                                                                                       |
+| `GCP_PROJECT_ID`      | my-gcp-project                                                                                    |
+
