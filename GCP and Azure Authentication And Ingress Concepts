@@ -37,3 +37,11 @@ If you want a managed Layer-7 gateway instead of running NGINX, Azure offers the
 | L4 LB for NGINX     | Google Cloud Network Load Balancer | Azure Load Balancer (Basic/Standard) |
 | Managed L7 option   | Google Cloud HTTP(S) Load Balancer | Azure Application Gateway (via AGIC) |
 | Typical NGINX setup | Service type LoadBalancer → NLB    | Service type LoadBalancer → Azure LB |
+
+What’s happening behind the scenes
+
+Azure provisions the Layer-4 Azure Load Balancer and attaches the public IP.
+
+Traffic to example.com arrives at that load balancer, which forwards to the NGINX pods.
+
+NGINX evaluates the Ingress host/path rules and routes to the right Kubernetes service.
