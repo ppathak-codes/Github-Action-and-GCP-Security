@@ -4,3 +4,36 @@
 | Token source                  | GitHub OIDC token          | GitHub OIDC token             |
 | Cloud service validates claim | IAM Workload Identity Pool | Azure AD Federated Credential |
 | Lifetime of token             | Minutes                    | Minutes                       |
+
+GCP (for comparison)
+
+GKE Ingress automatically provisions a Google Cloud external HTTP(S) Load Balancer (global L7) or a Network Load Balancer (L4) depending on how you configure it.
+
+With the popular NGINX ingress controller you typically create a Service of type LoadBalancer. GCP gives you a Network Load Balancer (L4) that sends traffic to the NGINX pods, which then perform L7 routing.
+
+Azure Kubernetes Service (AKS)
+
+For NGINX ingress you usually deploy a Kubernetes Service of type LoadBalancer as well.
+
+AKS uses the Azure Load Balancer for this by default:
+
+Basic or Standard Azure Load Balancer (Layer-4, TCP/UDP).
+
+It allocates a public IP and forwards traffic to the NGINX ingress controller pods.
+
+NGINX then does all Layer-7 routing (host/path rules) inside the cluster.
+
+Key points
+
+Yes, the flow is analogous:
+Client → Azure Load Balancer (L4) → NGINX ingress (L7) → Services/Pods.
+
+Azure doesn’t automatically give you an application-gateway (L7) unless you choose it.
+
+If you want a managed Layer-7 gateway instead of running NGINX, Azure offers the Application Gateway Ingress Controller (AGIC) which integrates directly with Azure Application Gateway (L7).
+
+| Feature             | GCP (GKE)                          | Azure (AKS)                          |
+| ------------------- | ---------------------------------- | ------------------------------------ |
+| L4 LB for NGINX     | Google Cloud Network Load Balancer | Azure Load Balancer (Basic/Standard) |
+| Managed L7 option   | Google Cloud HTTP(S) Load Balancer | Azure Application Gateway (via AGIC) |
+| Typical NGINX setup | Service type LoadBalancer → NLB    | Service type LoadBalancer → Azure LB |
