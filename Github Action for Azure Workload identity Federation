@@ -29,11 +29,14 @@ jobs:
         run: |
           kubectl apply -f k8s/
 
-Secret	Example
-AZURE_CLIENT_ID	app-registration client ID
-AZURE_TENANT_ID	your-tenant-guid
-AZURE_SUBSCRIPTION_ID	Azure subscription GUID
-AZURE_RESOURCE_GROUP	my-aks-rg
+| Secret                  | Example                    |
+| ----------------------- | -------------------------- |
+| `AZURE_CLIENT_ID`       | app-registration client ID |
+| `AZURE_TENANT_ID`       | your-tenant-guid           |
+| `AZURE_SUBSCRIPTION_ID` | Azure subscription GUID    |
+| `AZURE_RESOURCE_GROUP`  | my-aks-rg                  |
+| `AZURE_AKS_CLUSTER`     | my-aks-cluster             |
+
 AZURE_AKS_CLUSTER	my-aks-cluster
 
 
